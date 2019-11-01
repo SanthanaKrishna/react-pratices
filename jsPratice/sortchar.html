@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+
+</head>
+
+<body>
+	<input id="myInput" type="text" />
+	<div id="showData"></div>
+
+	<table id="myTable">
+
+	</table>
+
+</body>
+
+<script>
+	var arraySort = function (data) {
+		var duplicate = data;
+		var newArray = [];
+		console.log(duplicate.length)
+		debugger
+		while (duplicate.length > 0) {
+			var obj = findMax(duplicate);
+			newArray.push(duplicate[obj.id]);
+			duplicate.splice(obj.id, 1);
+		}
+		console.log(newArray);
+		let finalStr = ''
+		newArray.map((data, i) => {
+			for( let i = 0; i < data.count; i++ ) {
+				finalStr = finalStr + data.type
+			}
+		})
+		console.log('final str', finalStr);
+	}
+
+	var findMax = function (arr) {
+		let obj = new Object
+		let len = 0
+		arr.map((mapData, i) => {
+			if (i === 0) {
+				len = mapData.count;
+				obj = {
+					id: i
+				}
+			}
+			else if (mapData.count > len) {
+				len = mapData.count
+				obj = {
+					id: i
+				}
+			}
+		})
+		return obj;
+	}
+	var first = function (data) {
+		var array = data.split('')
+		var arr = []
+		array.map((mapData, i) => {
+			if (i === 0) {
+				arr.push({ count: 1, value: mapData, type: mapData })
+			} else if (mapData) {
+				var count = 0, id
+				for (let i = 0; i < arr.length; i++) {
+					if (arr[i].type === mapData) {
+						count = count + 1;
+						id = i
+					}
+				}
+				if (count === 0) {
+					arr.push({ count: 1, value: mapData, type: mapData })
+				} else if (count >= 1) {
+					arr[id].count = arr[id].count + 1
+				}
+			}
+		})
+		// console.log(arr);
+		arraySort(arr)
+	}
+	first('santhana')
+	// arraySort(['jose', 'sabike', 'Raja', 'thsgjdfsjfgsdj'])
+
+</script>
+
+</html>

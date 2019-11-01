@@ -1,0 +1,47 @@
+<html>
+<script>
+    function startScript() {
+        console.log('Script start');
+        for (let x = 0; x < 10000000000; x++) {
+
+        }
+        console.log('script end');
+    }
+
+    var data = [
+        { id: 0, name: 'aa' },
+        { id: 1, name: 'bb' },
+        { id: 3, name: 'dd' },
+        { id: 4, name: 'ee' }
+    ]
+
+    for (let i = 0; i < data.length; i++) {
+        var x = data[i].id;
+        if (i !== data[i].id) {
+            let check = data[i].id;
+            data[i].id = i;
+        }
+        console.log('loop data', data)
+    }
+    console.log('full value', data)
+
+    //document.getElementById("result").innerHTML +=x
+
+
+</script>
+
+<body>
+    <select name="abc" id="alphabets">
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+        <option value="d">d</option>
+        <option value="e">e</option>
+    </select> &nbsp;
+    <button onclick="array_move()">Start Script</button>
+    <p id="result"></p>
+
+
+</body>
+
+</html>
