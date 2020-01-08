@@ -17,7 +17,7 @@ function UserForm() {
         <div>
             <form onSubmit={submitHandler}>
                 <div>
-                    <label>F name</label>
+                    <label>Fname</label>
                     {/* <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} /> */}
                     <input type="text" {...bindFirstName} />
                 </div>

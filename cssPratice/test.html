@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* box model/ box sizing */
+        .box-model {
+            height: 100px;
+            width: 100px;
+            padding: 10px;
+            margin: 30px;
+            border: 20px solid red;
+            background-color: blue;
+            box-sizing: border-box;
+        }
+
+        /* align-center */
+        .out {
+            width: 400px;
+            height: 400px;
+            background-color: yellow;
+            position: relative;
+        }
+
+        .in {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* postion */
+        .position-learn div {
+            width: 160px;
+            height: 40px;
+            padding: 20px;
+            border: 8px solid green;
+            background: yellow;
+        }
+
+        .two {
+            position: relative;
+            top: 50px;
+            /* bottom: 50px; */
+        }
+
+        /* .two{
+            position: relative;
+            bottom: 50px;
+        } */
+        /* postion:absolute refer parent postiton*/
+        .tow {
+            position: absolute;
+            top: 0;
+        }
+
+        /* //traingle */
+        .triangle {
+            /* width: 100px; */
+            /* height: 100px; */
+            width: 0;
+            height: 0;
+            /* background-color: red; */
+            /* border-top: 10px solid blue; */
+            border-bottom: 100px solid green;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+        }
+
+        /* pusedo elemt */
+        .hover-psudo:hover::after {
+            content: 'i am inject to p tag';
+        }
+
+        /* data attribute */
+        .profile:hover::before {
+            display: inline;
+            content: attr(data-name);
+        }
+
+        .profile:hover::after {
+            display: inline;
+            content: attr(data-youtube);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h5>what is box model and properties related box model?</h5>
+    <div class="box-model"></div>
+    <br />
+
+
+
+    <h5>how to make traingle in css</h5>
+    <div class="triangle"></div>
+    <br />
+
+    <h4>how to align a block element inside another element</h4>
+    <h4>align element center</h4>
+    <div class="out">
+        <div class="in"></div>
+    </div>
+    <br />
+
+
+    <h5>diff b/w absolute, relative, fixed, static</h5>
+    <div class="position-learn">
+        <div class="one">one</div>
+        <br />
+        <div class="two">two</div>
+        <br />
+        <div class="three">three</div>
+        <br />
+    </div>
+
+    <h4>psudo class: single colon
+        psudeo element: double colon
+    </h4>
+    <p class="hover-psudo"></p> <br />
+    <div class="profile" data-name="santhana" data-youtube="sk"> profile </div>
+
+    <script>
+        function abc(a, b) {
+            return a + b
+        }
+        var sum = abc(1, 2)
+        console.log('pabu', sum)
+        var data = document.getElementById("demo").innerHTML = sum
+    </script>
+
+</body>
+
+</html>

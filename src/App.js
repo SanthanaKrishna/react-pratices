@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import GoogleMap from './googleAPi/Maps/ZipcodeAPI';
-import ChildernComp from './children/childrenComponent';
-import ReducerAndContext from './Hooks/reducerAndContext/index';
-
+// import { Debounce } from './js/debounceAndthrottling';
+import CustomHook from './Hooks/CustomHooks/DocumentTitle/index';
 class App extends Component {
     render() {
         return (
             <div>
-                <ReducerAndContext/>
+                <CustomHook />
             </div>
         )
     }

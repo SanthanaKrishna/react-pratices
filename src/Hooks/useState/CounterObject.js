@@ -6,6 +6,7 @@ function CounterObject() {
     return (
         <div>
             <form>
+                const name={}
                 <input type="text" value={name.firstname} onChange={e => setname({ ...name, firstname: e.target.value })} />
                 <input type="text" value={name.lastname} onChange={e => setname({ ...name, lastname: e.target.value })} />
                 <h2>{name.firstname} {name.lastname}</h2>

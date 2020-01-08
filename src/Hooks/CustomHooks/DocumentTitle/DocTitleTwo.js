@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import useDocumentTitle from './CustomUseDocTitle'
 
 function DocTitleTwo() {
-    const [count, setCount] = useState(0)
+    const [title, setTitle] = useState(0)
 
-    useDocumentTitle(count)
+    useDocumentTitle(title)
 
     return (
         <div>
-            <button onClick={() => setCount(count + 1)}>Count - {count}</button>
+            <input type="text" onChange={(event) => {
+                const { value } = event.target;
+                setTitle(value)
+            }
+            } />
+            {/* <button onClick={() => setCount(count + 1)}>Count - {count}</button> */}
         </div>
     )
 }

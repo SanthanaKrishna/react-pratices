@@ -170,6 +170,6 @@ useReducer
 useCallback
 useMemo
 useRef
-useImpervativeHandle
+useImperativeHandle
 useLayoutEffect
-useDebuggerValue
+useDebugValue
