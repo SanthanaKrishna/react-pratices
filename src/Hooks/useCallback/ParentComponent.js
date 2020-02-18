@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import Title from './Title';
 import Button from './Button';
 import Count from './Count';
@@ -7,6 +7,9 @@ function ParentComponent() {
     const [age, setAge] = useState(25)
     const [salary, setSalary] = useState(5000)
 
+    useEffect=(()=>{
+        
+    })
     //casted the fucntion
     const incremetAge = useCallback(() => {
         setAge(age + 1)

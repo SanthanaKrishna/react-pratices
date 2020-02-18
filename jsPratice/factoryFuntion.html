@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // class
+        class ClassCar {
+            drive() {
+                console.log('Vroom!');
+            }
+        }
+
+        const car1 = new ClassCar();
+        console.log(car1.drive());
+
+
+        // constructor
+        function ConstructorCar() { }
+
+        ConstructorCar.prototype.drive = function () {
+            console.log('Vroom!');
+        };
+
+        const car2 = new ConstructorCar();
+        console.log(car2.drive());
+
+
+        // factory
+        const proto = {
+            drive() {
+                console.log('Vroom!');
+            }
+        };
+
+        const factoryCar = () => Object.create(proto);
+
+        const car3 = factoryCar();
+        console.log(car3.drive());
+
+        function getMeal(menuUrl) {
+            return fetch(menuUrl)
+              .then(result => result.json())
+              .then(json => createMeal(json));
+          }          
+          function createMeal(courses=[]) {
+            return {
+              type: 'meal',
+              courses
+            };
+          }//factory function:  
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function who() {
+            console.log('who')
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('🤡');
+                }, 300);
+            });
+        }
+        function what() {
+            console.log('what')
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    reject('lurks:reject');
+                }, 200);
+            });
+        }
+        function where() {
+            console.log('where')
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('in the shadows');
+                }, 500);
+            });
+        }
+
+        async function msg() {
+            const [a, b, c] = await Promise.allSettled([who(), what(), where()]);
+            console.log(`${a.value} ${b.reason} ${c.value}`);
+        }
+        msg()// 🤡 lurks:reject in the shadows
+        async function msg() {
+            try {
+                const [a, b, c] = await Promise.all([who(), what(), where()]);
+                console.log(`${a} ${b} ${c}`);
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        msg() //lurks:reject  it will return only reject value
+
+        async function msg() {
+            try {
+                const [a, b, c] = await Promise.all([who(), what(), where()]);
+                console.log(`${a} ${b} ${c}`);
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        msg()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            name: "Bob",
+            age: 45
+        }
+        Object.defineProperty(obj, 'test', {
+            value: 'Krishna',
+            writable: true,
+            configurable: true,
+            enumerable: false
+        })
+
+        Object.defineProperty(obj, 'getset', {
+            configurable: true,
+            enumerable: true,
+            get: () => this.value,
+            set: (_val) => {
+                this.value = _val + "Developer"
+            }
+        })
+        obj.getset='React'
+    </script>
+</body>
+
+</html>

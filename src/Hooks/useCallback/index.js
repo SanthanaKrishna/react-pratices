@@ -5,7 +5,7 @@ import ParentComponent from './ParentComponent';
 function useCallback() {
     return (
         <div>
-            <ParentComponent/>
+            <ParentComponent />
         </div>
     )
 }

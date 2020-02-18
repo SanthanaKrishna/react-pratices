@@ -30,7 +30,7 @@ function Counter() {
     return (
         <div>
             <div>
-                <buton onClick={incremetOne}>Count One - {counterOne}</button>
+                <button onClick={incremetOne}>Count One - {counterOne}</button>
                 {/* <span>{isEven() ? 'Even' : 'odd'}</span> */}
                 <span>{isEven ? 'Even' : 'odd'}</span>
             </div>

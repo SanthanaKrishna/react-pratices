@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function* idGen() {
+            let i = 0;
+            while (true) {
+                yield ++i;
+            }
+        }
+        const myIdGen = idGen();
+        console.log(myIdGen.next()); // {value: 1, done: false}
+        console.log(myIdGen.next()); // {value: 2, done: false}
+        console.log(myIdGen.next()); // {value: 3, done: false}
+        console.log(myIdGen.next()); // {value: 4, done: true}
+    </script>
+</body>
+
+</html>

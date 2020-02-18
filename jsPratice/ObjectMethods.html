@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Object.hasOwnProperty()
+        const myObj = {
+            clown: null,
+            police: undefined,
+            santa: '🎅',
+            farmer: ''
+        }
+        console.log('clown' in myObj); // true
+        console.log('valueOf' in myObj); // true
+        console.log(myObj.hasOwnProperty('clown')); // true
+        console.log(myObj.hasOwnProperty('valueOf')); // false
+
+
+        //Object.assign()
+        const obj1 = { a: 10, b: 10, c: 10 };
+        const obj2 = { b: 20, c: 20 };
+        const obj3 = { c: 30 };
+        const new_obj = Object.assign({}, obj1, obj2, obj3, { d: 4, e: 5 }); //{a: 10, b: 20, c: 30, d: 4, e: 5}
+        console.log(new_obj)
+
+        //Object.is
+        const obj1 = { a: 10 }
+        const obj2 = { a: 10 }
+        const obj3 = obj1
+        Object.is(obj1, myObj2); // false
+        Object.is(obj1, myObj3); // true
+
+        //Object.freeze()
+        const obj1 = {
+            clown: '🤡',
+            police: '👮',
+            animals: {
+                cow: '🐄',
+                rabbit: '🐇'
+            }
+        }
+        Object.freeze(obj1)
+        obj1.clown = 33 /// Throws an error in strict mode only
+        //property and value remains same
+        console.log(obj1) //{clown: "🤡", police: "👮", animals: {cow: '🐄',rabbit: '🐇'}} 
+        delete obj1.animals.rabbit  //true : able to modify nested object
+        console.log(obj1) //{clown: "🤡", police: "👮", animals: {cow: '🐄'}} 
+        Object.isFrozen(obj1) //true
+
+        //Object.seal
+        const Obj = {
+            x: 1,
+            y: { a: 1, b: 2 },
+            z: 3
+        }
+        obj.x = 5 //{x: 1, y: { a:1, b:2}, z: 3}
+        delete obj.x //false
+        delete obj.y.a //true
+        Object.isSealed(obj) //true
+
+        //Object.key
+        const obj = {
+            piggy: '🐷',
+            birdy: '🐦',
+            bunny: '🐰'
+        }
+        Object.keys(obj) //["piggy", "birdy", "bunny"]
+        Object.values(obj) //["🐷", "🐦", "🐰"]
+
+        //Object.entries
+        const moreAnimals = {
+            camel: '🐫',
+            boar: '🐗',
+            turkey: '🦃'
+        };
+        const entries = Object.entries(moreAnimals); // [['camel','🐫'],['boar','🐗'],['turkey','🦃']]
+        const animalsMap = new Map(Object.entries(moreAnimals));
+        animalsMap.size //3
+        animalsMap.has('turkey')  // true
+        animalsMap.get('camel') // '🐫'
+        //Object.fromEntries:
+        const arr = [ ['0', 'a'], ['1', 'b'], ['2', 'c'] ];
+        Object.fromEntries(arr) //    {0: "a", 1: "b", 2: "c"}
+        //object.create
+        const person = {
+            isHuman: false,
+            printIntroduction: function () {
+                console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+            }
+        };
+        const me = Object.create(person);
+        me.name = "Matthew"; // "name" is a property set on "me", but not on "person"
+        me.isHuman = true; // inherited properties can be overwritten          
+        me.printIntroduction();
+          // expected output: "My name is Matthew. Am I human? true"
+
+    </script>
+</body>
+
+</html>

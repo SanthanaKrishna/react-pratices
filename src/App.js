@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 // import { Debounce } from './js/debounceAndthrottling';
-import CustomHook from './Hooks/CustomHooks/DocumentTitle/index';
+import UseCallback from './Hooks/useCallback/index';
+import MemoHook from './Hooks/useMemo';
+
 class App extends Component {
     render() {
         return (
             <div>
-                <CustomHook />
+                {/* <UseCallback /> */}
+                <MemoHook />
             </div>
         )
     }

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //example for #this
+        'use strict'
+        function printThis() {
+            console.log(this)
+        }
+        printThis()     //output: undefined
+
+        //An Object Method
+        const america1 = {
+            name: 'The United States of America',
+            yearFounded: 1776,
+            details: {
+                symbol: 'eagle',
+                currency: 'USD',
+                printDetails() {
+                    console.log(`The symbol is the ${this.symbol} and the currency is ${this.currency}.  ${this.name}  & ${this.yearFounded}`)
+                },
+            },
+        }
+        america1.details.printDetails();
+        //output: The symbol is the eagle and the currency is USD.  undefined  & undefined
+
+        //A Function Conatructor
+        function Country(name, yearFounded) {
+            this.name = name
+            this.yearFounded = yearFounded
+
+            this.describe = function () {
+                console.log(`${this.name} was founded in ${this.yearFounded}.`)
+            }
+        }
+        const america = new Country('The United States of America', 1776)
+        america.describe()
+        //output:  "The United States of America was founded in 1776."
+
+        //A Class Constructor
+        class Country {
+            constructor(name, yearFounded) {
+                this.name = name
+                this.yearFounded = yearFounded
+            }
+
+            describe() {
+                console.log(`${this.name} was founded in ${this.yearFounded}.`)
+            }
+        }
+
+        const america = new Country('The United States of America', 1776)
+
+        america.describe() //output:"The United States of America was founded in 1776."
+
+        //Call and Apply
+
+        const book = {
+            title: 'Harry Potter',
+            author: 'J. K. Rowling',
+        }
+
+        function summary() {
+            console.log(`${this.title} was written by ${this.author}.`)
+        }
+
+        function printThis() {
+            console.log(this)
+        }
+        summary() //output: "undefined was written by undefined"
+        summary.call(book)  // (or)
+        summary.apply(book)   //output: "Harry Potter was written by J. K. Rowling."
+        printThis() //output: it will print global objects 
+        printThis.call(book) //output: it will print book properties:{title: "Harry Potter", author: "J. K. Rowling"}
+ 
+        // Call and Apply
+        function longerSummary(genre, year) {
+            console.log(
+              `${this.title} was written by ${this.author}. It is a ${genre} novel written in ${year}.`
+            )
+          }
+        longerSummary.call(book, 'fantasy', 1997)
+        longerSummary.apply(book, ['dystopian', 1932]) 
+        //output for both call & apply: "Harry Potter was written by J. K. Rowling.It is a fantasy novel written in 1997."
+
+        //Bind
+        const newbindFunction=summary.bind(book)
+        newbindFunction() //output:"Harry Potter was written by J. K. Rowling."
+    </script>
+</body>
+
+</html>
