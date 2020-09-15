@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const names = "abeccbbdee";
+        var chars = names.split('');
+        let prev = null;
+        let k = 0;
+        const removeDups = (chars) => {
+            chars.forEach((item) => {
+                if (prev != item) {
+                    chars[k] = item;
+                    prev = item;
+                    k = k + 1;
+                }
+            })
+            return chars.join('');
+        }
+        console.log(removeDups(chars))
+    </script>
+</body>
+
+</html>

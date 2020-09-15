@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=<device-width>, initial-scale=1.0"> -->
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>Intersection observer</h1>
+        <h1>The video element</h1>
+
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+        <div id="video-1">
+            <video width="750" height="300" controls autoplay="true" poster="" loop="true" muted="true"
+                class="video-lazyx">
+                <source
+                    data-src="https://cdn.flowplayer.com/187d3787-e32b-47b7-bf79-799ce0358df7/v-786a23a2-e520-45f4-9176-14cd46347185_original.mp4"
+                    type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+        <div id="video-2">
+            <video width="750" height="300" controls autoplay="true" poster="" loop="true" muted="true"
+                class="video-lazyx">
+                <source
+                    data-src="https://cdn.flowplayer.com/187d3787-e32b-47b7-bf79-799ce0358df7/v-b09eb3b3-c56a-410b-ab27-d057c596abcb_original.mp4"
+                    type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+
+
+        <div id="video-3">
+            <video width="750" height="300" autoplay="true" poster="" loop="true" muted="true" controls
+                class="video-lazy">
+                <source
+                    data-src="https://cdn.flowplayer.com/187d3787-e32b-47b7-bf79-799ce0358df7/v-4c9d3868-fa1e-45b3-8dcb-b52b99f3e08a_original.mp4"
+                    type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+            Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+            of Lorem Ipsum.
+        </p>
+        <div id="video-4">
+            <video width="750" height="300" autoplay="true" poster="" controls loop="true" muted="true"
+                class="video-lazy">
+                <source
+                    data-src="https://cdn.flowplayer.com/187d3787-e32b-47b7-bf79-799ce0358df7/v-3c26526a-0aa4-411b-a041-1db020d4c035_original.mp4"
+                    type="video/mp4">
+
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+            Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+            of Lorem Ipsum.
+        </p>
+
+        <div id="video-5">
+            <video width="750" height="300" autoplay="true" poster="" controls loop="true" muted="true"
+                class="video-lazy">
+                <source
+                    data-src="https://cdn.flowplayer.com/187d3787-e32b-47b7-bf79-799ce0358df7/v-7a8e8991-f347-4aac-a9e6-302402d84a2a_original.mp4"
+                    type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+    </section>
+    <script>
+
+
+        //var lazyVideos = [].slice.call(document.querySelectorAll("video-lazy"));
+        const videoElementList = document.querySelectorAll('.video-lazy');
+        const options = {
+            root: null,// it is the viewport
+            threshold: 0, // 0 to 1 scale
+            rootMargin: ''
+        }
+        if ("IntersectionObserver" in window) {
+            const lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(function (video) {
+                    console.log(video.isIntersecting);
+                    if (video.isIntersecting) {
+                        for (var source in video.target.children) {
+                            var videoSource = video.target.children[source];
+                            console.log('source,', source);
+                            console.log('videoSource', videoSource)
+                            if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                                videoSource.src = videoSource.dataset.src;
+                            }
+                        }
+                        video.target.load();
+
+                        video.target.classList.remove("video-lazy");
+                        setTimeout(() => {
+                            video.target.play();
+                            console.log('play()');
+                        }, 5000)
+                        
+                        lazyVideoObserver.unobserve(video.target);
+                        //video.target.children[0].removeAttribute('data-src')
+                    }
+                })
+            })
+            videoElementList.forEach((videoEle) => {
+                lazyVideoObserver.observe(videoEle);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

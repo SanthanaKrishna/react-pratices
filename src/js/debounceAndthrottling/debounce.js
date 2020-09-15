@@ -1,33 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 
-export function Debounce() {
-    const [input, setInput] = useState('');
-    let timerId;
+export const Debounce = () => {
+    const [search, setSearch] = useState('');
 
-    const handleDebounce = (event) => {
-        setInput(event.target.value);
-        debounceFunction(makeApiCall, 300)
-    };
 
-    // Debounce function: Input as function which needs to be debounced and delay is the debounced time in milliseconds
-    const debounceFunction = (func, delay) => {
-        // Cancels the setTimeout method execution
-        clearTimeout(timerId);
-        console.log('pass clearTimeout');
-        // Executes the func after delay time.
-        timerId = setTimeout(func, delay)
-        console.log('setTimeout get passed')
+
+    const useDebounce = (value, delay) => {
+        const [debounceValue, setDebounceValue] = useState(value);
+        useEffect(() => {
+            let timerId = setTimeout(() => {
+                console.log('setting ')
+                setDebounceValue(value)
+            }, delay)
+            return () => {
+                console.log('clear')
+                clearTimeout(timerId)
+            }
+        }, [search, delay]);
+
+        return debounceValue;
     }
+    const handleDebounce = useDebounce(search, 5000)
     const makeApiCall = () => {
-        fetch('https://api.mydomain.com')
+        fetch('http://dummy.restapiexample.com/api/v1/employees')
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => console.error(error))
     }
+    const handleSearch = (event) => {
+        setSearch(event.target.value);
+        handleDebounce(event.target.value)
+    };
 
     return (
         <div>
-            <input type="text" value={input} onChange={handleDebounce} />
+            <input type="text" name="search-input" value={search} onChange={handleSearch} />
         </div>
     )
 }

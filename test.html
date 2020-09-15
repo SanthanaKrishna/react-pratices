@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="debounce">
+    Debounce
+  </button>
+  <script>
+    var button = document.getElementById("debounce");
+    // const debounce = (func, delay) => {
+    //   let debounceTimer
+    //   return function () {
+    //     const context = this
+    //     const args = arguments
+    //     console.log(this, arguments)
+    //     clearTimeout(debounceTimer)
+    //     debounceTimer
+    //       = setTimeout(() => func.apply(context, args), delay)
+    //   }
+    // }
+    // button.addEventListener('click', debounce(function () {
+    //   console.log('clicked')
+    // }, 3000)); 
+
+    const debounce = (func, delay) => {
+      let timeoutId;
+      return (...args) => {
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(() => {
+          func(...args)
+        }, delay)
+      }
+    }
+
+    button.addEventListener('click', debounce((e) => {
+      console.log('e', e)
+      console.log('types')
+      // fetch('http://dummy.restapiexample.com/api/v1/employees')
+      //   .then(response => response.json())
+      //   .then(data => console.log(data))
+      //   .catch(error => console.error(error))
+    }, 3000)); 
+    
+  </script>
+</body>
+
+</html>
