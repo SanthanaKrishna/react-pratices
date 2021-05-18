@@ -1,0 +1,131 @@
+.radio-btn:checked,
+.radio-btn:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+.radio-btn:checked + label,
+.radio-btn:not(:checked) + label {
+    position: relative;
+    padding-left: 38px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+
+.radio-btn + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    background: #fff;
+}
+
+.radio-btn:not(:checked) + label:before {
+    border: 1px solid grey;
+}
+.radio-btn:checked + label:before {
+    border: 1px solid #00728d !important;
+}
+.radio-btn:checked + label:after,
+.radio-btn:not(:checked) + label:after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: #00728d;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.radio-btn:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+.radio-btn:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.radio-btn:focus + label:before {
+    border: 1px solid #1c6ef2;
+}
+.radio-btn + label:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+.check-btn:checked,
+.check-btn:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+.check-btn:checked + label,
+.check-btn:not(:checked) + label {
+    position: relative;
+    padding-left: 38px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+
+.check-btn + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 21px;
+    height: 21px;
+    border-width: 3px;
+    border-radius: 10%;
+    background: #fff;
+}
+
+.check-btn:not(:checked) + label:before {
+    border: 1.5px solid grey;
+}
+.check-btn:checked + label:before {
+    background: #00728d;
+    border: 2px solid #00728d !important;
+}
+
+.check-btn:checked + label:after {
+    content: "";
+    width: 5px;
+    height: 10px;
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: 9px;
+
+    border-right: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.check-btn:focus + label:before {
+    border: 3px solid #1c6ef2;
+}
+.check-btn + label:hover {
+    text-decoration: underline;
+}
+
+.check-btn:checked:focus + label:before {
+}
