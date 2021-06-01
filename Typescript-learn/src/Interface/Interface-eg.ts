@@ -1,10 +1,25 @@
+//Object
+let user: {
+    name: string;
+    age: number;
+    [key: string]: any;
+}
+user = {
+    name: 'sk',
+    age: 25,
+    surname:''
+}
 // Interface
 interface Profile {
     readonly name: string;
     age?: number;
+    hello(): string;
 }
 let profile: Profile = {
     name: 'SK',
+    hello() {
+        return 'Hello Typescript';
+    }
 }
 
 //Index Signature

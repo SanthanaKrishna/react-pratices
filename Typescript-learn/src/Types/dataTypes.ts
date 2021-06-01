@@ -26,7 +26,7 @@ let array1: string[] = ['x', 'y'];
 let array2: Array<string> = ['x', 'y'];
 
 //Tuple
-let tuple: [string, number] = ['str', 1];
+let tuple: [string, number, boolean] = ['str', 1, true];
 
 //Enum
 enum Color {
@@ -43,13 +43,36 @@ enum Color1 {
 }
 console.log(Color.Red, Color.Green, Color.Blue) //2,3,4
 
+enum UserRole {
+    ADMIN= 'admin',
+    USER= 'user',
+}
+
+function isAdminWithoutEnum(c: string) {
+    if (c === 'admin') {
+        return true
+    }
+    return false;
+}
+isAdminWithoutEnum('admin');
+
+function isAdmin(c: UserRole) {
+    if (c === UserRole.ADMIN) {
+        return true
+    }
+    return false;
+}
+const role: UserRole = UserRole.ADMIN;
+isAdmin(role);
+
+
 //Type Assertions
 
-const email = document.getElementById('email');
-if (email) {
-    email.addEventListener('change', e => {
-        const input = e.currentTarget as HTMLInputElement;
-        // const input = <HTMLInputElement>e.currentTarget; // used in TSX
+// const email = document.getElementById('email');
+// if (email) {
+//     email.addEventListener('change', e => {
+//         const input = e.currentTarget as HTMLInputElement;
+//         // const input = <HTMLInputElement>e.currentTarget; // used in TSX
 
-    })
-}
+//     })
+// }
