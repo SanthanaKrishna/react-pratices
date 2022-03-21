@@ -3,8 +3,8 @@ const strNumAdd = () => {
     const a = 5;
     const b = '6';
     console.log(a + b); // 56
-    console.log(a + +b) // 11
-        + b; // 6
+    console.log(a + +b); // 11
+    console.log(+ b); // 6 (convert string to number)
 }
 // check if number is integer
 function isInt(num) {
@@ -14,7 +14,27 @@ console.log(isInt(4)); // true
 console.log(isInt(12.2)); // false
 console.log(isInt(0.3)); // false
 
-//-------------------------------**********remove duplicate value*************----------------------------//
+//___________________
+
+const names = "abeccbbdee";
+var chars = names.split('');
+let prev = null;
+let k = 0;
+const removeDups = (chars) => {
+    chars.forEach((item) => {
+        if (prev != item) {
+            chars[k] = item;
+            prev = item;
+            k = k + 1;
+        }
+    })
+    return chars.join('');
+}
+
+
+
+
+//---------**********remove duplicate value in Array*************----------------------------//
 
 /**
  * remove duplicate value in array
@@ -38,9 +58,11 @@ const removeDupsArrEach = (arr) => {
     });
     return newArr;
 }
-//efficient
+//efficient both for string and number
 const removeDupsArrFilter = (names) => names.filter((item, index) => names.indexOf(item) === index);
 const removeDupsArrSet = (names) => [...new Set(names)];
+
+//---------**********remove duplicate value in Array of Object*************----------------------------//
 
 //------------------------*********count the duplicate value******************------------------------//
 /**
@@ -62,10 +84,22 @@ const countDupsValueArr = (arr) => {
     return result;
 }
 
+const countDupsValueArr1 = (arr) => {
+    var result = {};
+    return arr.forEach(item => {
+        //above shortfrom
+
+        result[item] = (result[item] || 0) + 1;
+        console.log('result', result)
+        return result;
+    })
+}
+
+countDupsValueArr1()
 //-------------------------********consecutive duplicates****************------------------------//
 /**
  * Remove all consecutive duplicates from the string
- * @param {'aabcbbcfffdee'} input 
+ * @param {'aabcbbcfffdee'}  
  * @returns abcbcfde
  */
 const consecutiveDupStr = (input) => {
@@ -139,7 +173,7 @@ const sequenceRange = (arr) => {
     let result = [];
     let start, end;
     let k = 0;
-    for (i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         start = arr[k];
         if (arr[i + 1] - arr[i] === 1) {
             end = arr[i + 1]
@@ -163,4 +197,17 @@ const changePosition = (pos1, pos2) => {
     var temp = a[2];
     a[2] = a[3]
     a[3] = temp
+}
+
+
+const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+        if (timeoutId) {
+            clearTimeout(timeoutId)
+        }
+        timeoutId = setTimeout(() => {
+            func(...args)
+        }, delay)
+    }
 }
