@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /Typescript-learn/node_modules
+/redux/node_modules
 /.pnp
 .pnp.js
 
