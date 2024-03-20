@@ -5,13 +5,15 @@ class ErrorBoundary extends Component {
         super(props)
 
         this.state = {
-            hasError: false
+            hasError: false,
+            error: null
         }
     }
 
-    static getDervideStateFromError(error) {
+    static getDerivedStateFromError(error) {
         return {
-            hasError: true
+            hasError: true,
+            error
         }
     }
 
@@ -21,7 +23,7 @@ class ErrorBoundary extends Component {
     }
     render() {
         if (this.state.hasError) {
-            return <h1>Something went wrong</h1>
+            return this.props.fallback
         }
         return this.props.children
     }
