@@ -8,7 +8,6 @@ function UseTransition() {
 
   const LIST_SIZE = 20000
 
-
   function handleChange(e) {
     setInput(e.target.value);
     startTransition(() => {
