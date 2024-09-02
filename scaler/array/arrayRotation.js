@@ -20,9 +20,9 @@ function arrayRotation(arr, k) {
   console.log('result ', arr);
 }
 
-const arr = [1, 2, 3, 4, 5, 6, 7]
+const arr = [1, 1, 4, 9, 4, 7, 1] // [7 1 1 1 4 9 4]
 //[10, 11, 12, 1, 2, 3...9]
-arrayRotation(arr, 3)
+arrayRotation(arr, 9)
 
 // arr = arrayReverse(arr, Math.floor(n / 2), 0, n - 1);
 // const arr1 = arrayReverse(arr, Math.floor(k / 2), 0, k - 1);
